@@ -1,4 +1,4 @@
-# TL — Terse Language
+# TL — Terse Language for Claude
 
 Compressed human→AI communication using keyboard symbols.
 Target: minimize keystrokes, maximize information density.
