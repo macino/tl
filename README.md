@@ -6,6 +6,19 @@ Works anywhere Claude Code is running (global hook).
 
 ---
 
+## Install
+
+```bash
+git clone git@github.com:macino/tl.git ~/path/to/tl
+cd ~/path/to/tl
+./install.sh
+# Restart Claude Code
+```
+
+Entities live at `entities/` inside the cloned repo (gitignored — local only).
+
+---
+
 ## Quick Start
 
 ```bash
@@ -153,4 +166,4 @@ Free text context, known issues, gotchas.
 1. `install.sh` registers `expand.sh` as a global `UserPromptSubmit` hook
 2. Hook checks `~/.claude/.tl` flag
 3. If on: injects TL grammar + resolves `@entity` refs into every prompt as system context
-4. Works in any project directory — grammar and entities come from ai-wkf repo
+4. Works in any project directory — grammar and entities come from the cloned repo
