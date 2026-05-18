@@ -37,6 +37,37 @@
 ::   means / defined-as   X :: Y
 ```
 
+## Tense
+
+```
+-t        past    (was / happened / completed)
++t        future  (will / planned / expected)
+          present = unmarked default
+
+-t:2d     2 days ago
++t:5m     in 5 minutes
++t:DATE   on date            +t:2026-05-20
+```
+
+## Linguistic shorthands
+
+```
+;     sequence / then         fix ; deploy ; notify
+<-    because / caused-by     crash <- OOM
+_     blocked / waiting-on    _ @PR#42
+%     progress / status       %done  %wip  %50
+&     and-also / relates-to   @auth & @session affected
+```
+
+## Conditionals
+
+Inside `()` only — avoids ambiguity with other `?` uses.
+
+```
+(X ? Y : Z)   if X then Y else Z
+(X ? Y)       if X then Y (no else)
+```
+
 ## Mode prefixes (outside-task signals)
 
 ```
