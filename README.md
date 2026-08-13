@@ -15,7 +15,7 @@ cd ~/path/to/tl
 # Restart Claude Code
 ```
 
-Entities live at `entities/` inside the cloned repo (gitignored — local only).
+Entities live at `~/.claude/entities/` (local only, alongside your other Claude data).
 
 ---
 
@@ -58,7 +58,7 @@ Entities live at `entities/` inside the cloned repo (gitignored — local only).
 | `()` | metadata / not a task | `(think) maybe split service` |
 | `{}` | set / options | `>> {A \| B}` |
 | `\|` | or | `fix \| skip` |
-| `@name` | entity ref → `entities/name.md` | `@server`, `@tomas` |
+| `@name` | entity ref → `~/.claude/entities/name.md` | `@server`, `@tomas` |
 | `#tag` | type / category | `#bug`, `#low`, `#task` |
 | `::` | means / defined-as | `timeout :: 30s` |
 
@@ -80,13 +80,13 @@ These signal intent — I respond differently to each:
 
 ## Entity Files
 
-`@name` resolves to `entities/name.md` in the ai-wkf repo.
+`@name` resolves to `~/.claude/entities/name.md`.
 When TL is on, I automatically load entity files found in your message.
 
 Create an entity:
 
 ```bash
-# entities/server.md
+# ~/.claude/entities/server.md
 host: api.example.com
 port: 8080
 env: staging
@@ -166,4 +166,4 @@ Free text context, known issues, gotchas.
 1. `install.sh` registers `expand.sh` as a global `UserPromptSubmit` hook
 2. Hook checks `~/.claude/.tl` flag
 3. If on: injects TL grammar + resolves `@entity` refs into every prompt as system context
-4. Works in any project directory — grammar and entities come from the cloned repo
+4. Works in any project directory — grammar comes from the cloned repo, entities from `~/.claude/entities/`

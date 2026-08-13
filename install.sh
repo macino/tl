@@ -16,8 +16,8 @@ sed "s|{{REPO_DIR}}|$REPO_DIR|g" "$REPO_DIR/SKILL.md" > "$SKILLS_DIR/SKILL.md"
 ok "~/.claude/skills/tl/SKILL.md"
 
 # Entities dir
-mkdir -p "$REPO_DIR/entities"
-ok "entities/"
+mkdir -p "$CLAUDE_DIR/entities"
+ok "~/.claude/entities/"
 
 # Hook
 mkdir -p "$HOOKS_DIR"

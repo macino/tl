@@ -6,7 +6,7 @@
 [ -f "$HOME/.claude/.tl" ] || exit 0
 
 REPO_DIR="{{REPO_DIR}}"
-ENTITIES_DIR="$REPO_DIR/entities"
+ENTITIES_DIR="$HOME/.claude/entities"
 GRAMMAR_FILE="$REPO_DIR/grammar.md"
 
 # Read prompt from stdin JSON
@@ -23,13 +23,15 @@ output=""
 
 # Inject grammar
 if [ -f "$GRAMMAR_FILE" ]; then
-    output+="TL (Terse Language) active. Interpret all @entity refs, #type tags, and mode prefixes per grammar below.\n\n"
+    output+="TL (Terse Language) active. Interpret all @entity refs, #type tags, and mode prefixes per grammar below. Also use TL symbols in your responses.\n\n"
     output+="$(cat "$GRAMMAR_FILE")\n\n"
 fi
 
 # Resolve @entity refs found in prompt
 if [ -n "$prompt" ] && [ -d "$ENTITIES_DIR" ]; then
-    entities=$(echo "$prompt" | grep -oE '@[a-zA-Z][a-zA-Z0-9_-]*' | sort -u)
+    # trailing "/" is captured so scoped package names (@previo/design-system) can be
+    # dropped — they are npm scopes, not entity refs
+    entities=$(echo "$prompt" | grep -oE '@[a-zA-Z][a-zA-Z0-9_-]*/?' | grep -v '/$' | sort -u)
     while IFS= read -r ref; do
         [ -z "$ref" ] && continue
         name="${ref#@}"
