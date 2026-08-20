@@ -1,7 +1,7 @@
 # TL — Terse Language for Claude
 
-Compressed human→AI communication using keyboard symbols.
-Target: minimize keystrokes, maximize information density.
+Compressed bidirectional human⇄AI communication using keyboard symbols.
+Target: minimize keystrokes, maximize information density — in both directions.
 Works anywhere Claude Code is running (global hook).
 
 ---

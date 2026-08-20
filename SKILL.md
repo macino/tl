@@ -1,8 +1,9 @@
 ---
 name: tl
 description: >
-  Toggle TL (Terse Language) mode on/off. TL is a compressed human→AI communication notation
-  using keyboard symbols for entities, directives, relations, and context modes.
+  Toggle TL (Terse Language) mode on/off. TL is a compressed bidirectional human⇄AI
+  communication notation using keyboard symbols for entities, directives, relations,
+  and context modes — used for input and, per its output-encoding rules, for responses too.
   Trigger on "tl on", "tl off", "tl status", "tl help", "/tl", or questions about TL mode.
 ---
 
@@ -70,3 +71,15 @@ Manages TL (Terse Language) mode. Toggle via `{{REPO_DIR}}/toggle.sh`.
 - **Dual meaning**: a word/phrase with two plausible readings (e.g. "live" = running|in-prod)
   must be disambiguated before acting, never inferred. Flag existing ambiguous instructions
   instead of silently picking one reading.
+
+## Output encoding
+
+- TL is bidirectional: when active, encode responses using the same symbols wherever they
+  compress without losing precision. Full sentences stay the default wherever a symbol
+  would obscure meaning — compression never overrides the dual-meaning rule.
+- Most symbols are bidirectional as-is (`=`, `!=`, `->`, `<-`, `~`, `*`, `!`, `#`, `@`, `::`,
+  `::=`, tense, linguistic shorthands, `%`, `?!`, and `?` — I may ask a yes/no back).
+- Input-only, never emit these myself: `>>` / `>?` (the user's command channel);
+  `(topic)` / `(dod)` (user-owned state — echo, never set); `(q)`, `(think)`, `(ctx)`,
+  `(meta)`, `(idea)` (input mode signals). `(ok)` is the exception — a closure signal,
+  not a state I declare unilaterally mid-task.

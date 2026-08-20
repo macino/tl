@@ -87,6 +87,13 @@ RESPONSE RULES
                   disambiguate before acting, don't infer; flag existing
                   ambiguous instructions instead of silently picking one
 
+OUTPUT ENCODING  (TL is bidirectional)
+  use TL symbols in responses wherever they compress w/o losing precision;
+  full sentences stay default wherever a symbol would obscure meaning
+  bidirectional  =  != -> <- ~ * ! # @ :: ::= tense linguistic-shorthands % ?! ?
+  input-only     >> >?  (topic) (dod)  (q) (think) (ctx) (meta) (idea)
+  output excep.  (ok) — closure signal, fine to emit; not a state I set myself
+
 EXAMPLES
   @server = -running !              server down, urgent
   >> {A | B}                        do A or B, your call
@@ -96,6 +103,7 @@ EXAMPLES
   -t @db crash <- migration         db was down because migration
   (@cache %done ? >> deploy : _)    if cache done deploy else block
   (ok)                              that answered it, thread closed
+  Q: is @server up? -> A: @server = -running !   TL-encoded answer, not prose
   (meta) scope                      you did more than I asked
   !action                           do not act
   *v latIds = 1713,1714,1715        verified against source

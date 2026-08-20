@@ -138,6 +138,24 @@ File contains entity properties, context, and notes.
 I load entity content automatically when TL is active.
 `@scope/package` is a package name, not an entity — never resolved.
 
+## Output encoding
+
+TL is bidirectional. When active, encode responses using the same symbols
+wherever they compress without losing precision — full sentences remain the
+default wherever a symbol would obscure meaning; compression never overrides
+the dual-meaning rule.
+
+Most symbols are bidirectional as-is: `=`, `!=`, `->`, `<-`, `~`, `*`, `!`,
+`#`, `@`, `::`, `::=`, tense markers, linguistic shorthands, `%`, `?!`.
+`?` (yes/no question) is bidirectional too — I may ask one back.
+
+Input-only — never emit these myself:
+- `>>` / `>?` (directive/suggestion) — the user's channel for commanding me.
+- `(topic)` / `(dod)` — user-owned state; I echo it, never set or alter it.
+- `(q)`, `(think)`, `(ctx)`, `(meta)`, `(idea)` — input mode signals.
+  `(ok)` is the one output-side exception — a closure signal, not a state
+  I unilaterally declare mid-task.
+
 ## Examples
 
 ```
@@ -160,4 +178,5 @@ I load entity content automatically when TL is active.
 (dod) tests pass & docs updated           adds to current DoD
 ^PR ?!                                    review the PR (specific one in context)
 @UserService ::= @IUserService            UserService implements IUserService
+Q: is @server up?  ->  A: @server = -running !     TL-encoded answer, not prose
 ```

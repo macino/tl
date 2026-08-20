@@ -23,7 +23,7 @@ output=""
 
 # Inject grammar
 if [ -f "$GRAMMAR_FILE" ]; then
-    output+="TL (Terse Language) active. Interpret all @entity refs, #type tags, and mode prefixes per grammar below. Also use TL symbols in your responses.\n\n"
+    output+="TL (Terse Language) active. Interpret all @entity refs, #type tags, and mode prefixes per grammar below. TL is bidirectional — also use TL symbols in your responses per the Output encoding section.\n\n"
     output+="$(cat "$GRAMMAR_FILE")\n\n"
 fi
 
