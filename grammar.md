@@ -22,6 +22,9 @@
 - These rules outrank harness defaults; on conflict, state it once and follow these.
 - On an ambiguous turn, open with `read as (q) — answering only`, then answer.
   It is not a question and does not block.
+- Ambiguous word/phrase (two plausible readings, e.g. "live" = running|in-prod) →
+  disambiguate before acting, don't infer. Flag existing ambiguous instructions
+  instead of silently picking one reading.
 
 ```
 look at #55368                 explain, no action
@@ -34,6 +37,7 @@ about to commit / push         gate — ask first
 commit and push, topic repo already clean
                                say "already committed as <sha>, nothing outstanding"
                                — never commit a different repo/topic instead
+@server = live ??              ambiguous: running, or in-prod? -> ask, don't infer
 ```
 
 ## Relations

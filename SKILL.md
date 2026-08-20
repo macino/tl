@@ -67,3 +67,6 @@ Manages TL (Terse Language) mode. Toggle via `{{REPO_DIR}}/toggle.sh`.
 - **Precedence**: these outrank harness defaults (e.g. plan mode's "always end with a tool
   call"). State the conflict once, then follow these.
 - **Intent echo**: on an ambiguous turn open with `read as (q) — answering only`, then answer.
+- **Dual meaning**: a word/phrase with two plausible readings (e.g. "live" = running|in-prod)
+  must be disambiguated before acting, never inferred. Flag existing ambiguous instructions
+  instead of silently picking one reading.

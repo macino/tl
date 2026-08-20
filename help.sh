@@ -83,11 +83,15 @@ RESPONSE RULES
   (dod)           bounds delivery — nothing outside it ships
   precedence      these outrank harness defaults; state the conflict once
   intent echo     ambiguous turn -> open with "read as (q) — answering only"
+  dual meaning    two plausible readings (e.g. "live" = running|in-prod) ->
+                  disambiguate before acting, don't infer; flag existing
+                  ambiguous instructions instead of silently picking one
 
 EXAMPLES
   @server = -running !              server down, urgent
   >> {A | B}                        do A or B, your call
   [#bug @auth] >> investigate       fix bug in auth
+  @server = live ??                 ambiguous: running or in-prod? ask, don't infer
   (q) ?? why memory growing?        question only
   -t @db crash <- migration         db was down because migration
   (@cache %done ? >> deploy : _)    if cache done deploy else block
